@@ -34,6 +34,19 @@ module.exports = {
           'html-loader',
         ],
       },
+      {
+        test: /\.svg$/,
+        use: 'file-loader',
+      },
+      {
+        test: /\.woff$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 50000,
+          },
+        },
+      },
     ],
   },
 };
