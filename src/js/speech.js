@@ -9,7 +9,14 @@ try {
   const recognition = new SpeechRecognition();
   const timer = new Timer();
 
-  // recognition.lang = 'fa';
+  const langSelectEl = document.getElementById('lang-select');
+
+  recognition.lang = langSelectEl.value || 'en-US';
+
+  langSelectEl.onchange = (e) => {
+    console.log('Changed');
+    if (e.target.value) recognition.lang = e.target.value;
+  };
 
   recognition.onend = () => {
     recognition.start();
