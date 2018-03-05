@@ -1,0 +1,20 @@
+.shepherd-step {
+  max-width: 400px !important;
+}
+
+.shepherd-element.shepherd-theme-arrows .shepherd-content footer .shepherd-buttons li .shepherd-button {
+  background: #00ACB8,
+}
+
+.shepherd-element.shepherd-theme-arrows.shepherd-has-title .shepherd-content header {
+  background: #00ACB8;
+  color: #fff;
+}
+
+.shepherd-element.shepherd-theme-arrows .shepherd-content header a.shepherd-cancel-link {
+  color: #fff;
+}
+
+.shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-center.shepherd-has-title .shepherd-content:before, .shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-right.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before, .shepherd-element.shepherd-theme-arrows.shepherd-element-attached-top.shepherd-element-attached-left.shepherd-target-attached-bottom.shepherd-has-title .shepherd-content:before {
+  border-bottom-color: #00ACB8;
+}
