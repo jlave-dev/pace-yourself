@@ -1,5 +1,3 @@
-import '../index.html';
-
 import './favicon.ico';
 
 import './styles.scss';

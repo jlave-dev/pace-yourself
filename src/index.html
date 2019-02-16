@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible"
+    content="IE=edge">
+  <title>Pace Yourself!</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <section class="hero is-fullheight">
+    <div class="hero-head">
+      <header class="navbar">
+        <div class="container">
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="field">
+                <p class="control has-icons-left">
+                  <span class="select">
+                    <select id="lang-select"></select>
+                  </span>
+                  <span class="icon is-small is-left">
+                    <i class="icon-globe"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 id="wpm-display"
+          class="title">
+          <span id="animated-wpm">0</span> WPM
+        </h1>
+        <canvas id="gauge"></canvas>
+        <div id="voice-indicator"
+          class="loader-inner hidden">
+          <div class="line-scale-pulse-out">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gauge.js/1.3.5/gauge.min.js"></script>
+  <script src="./index.js"></script>
+</body>
+
+</html>
