@@ -6,56 +6,57 @@ const MS_PER_MINUTE = 60000;
 
 try {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition();
-  const timer = new Timer();
+  if (SpeechRecognition) {
+    const recognition = new SpeechRecognition();
+    const timer = new Timer();
 
-  const langSelectEl = document.getElementById('lang-select');
+    const langSelectEl = document.getElementById('lang-select');
 
-  recognition.lang = langSelectEl.value || 'en-US';
+    recognition.lang = langSelectEl.value || 'en-US';
 
-  langSelectEl.onchange = (e) => {
-    console.log('Changed');
-    if (e.target.value) recognition.lang = e.target.value;
-  };
+    langSelectEl.onchange = (e) => {
+      console.log('Changed');
+      if (e.target.value) recognition.lang = e.target.value;
+    };
 
-  recognition.onend = () => {
-    recognition.start();
-  };
+    recognition.onend = () => {
+      recognition.start();
+    };
 
-  recognition.onspeechstart = () => {
-    document.querySelector('.loader-inner').classList.remove('hidden');
-    if (!timer.isActive) {
-      timer.setStart();
-      timer.isActive = true;
-    }
-  };
+    recognition.onspeechstart = () => {
+      document.querySelector('.loader-inner').classList.remove('hidden');
+      if (!timer.isActive) {
+        timer.setStart();
+        timer.isActive = true;
+      }
+    };
 
-  recognition.onspeechend = () => {
-    document.querySelector('.loader-inner').classList.add('hidden');
-    if (timer.isActive) {
-      timer.setEnd();
-      timer.isActive = false;
-    }
-  };
+    recognition.onspeechend = () => {
+      document.querySelector('.loader-inner').classList.add('hidden');
+      if (timer.isActive) {
+        timer.setEnd();
+        timer.isActive = false;
+      }
+    };
 
-  recognition.onresult = (event) => {
-    const timeSinceLastEvent = timer.getDelta(); // ms
-    if (timeSinceLastEvent > 0) {
-      const { transcript } = event.results[0][0];
-      const numberOfWords = transcript.split(' ').length - 1;
-      if (numberOfWords > 1) {
-        const wordsPerMinute = (numberOfWords / timeSinceLastEvent) * MS_PER_MINUTE;
-        if (wordsPerMinute < 300) {
-          gauge.set(wordsPerMinute); // set gauge value
-          wpm.update(wordsPerMinute);
-          console.log(transcript, wordsPerMinute);
+    recognition.onresult = (event) => {
+      const timeSinceLastEvent = timer.getDelta(); // ms
+      if (timeSinceLastEvent > 0) {
+        const { transcript } = event.results[0][0];
+        const numberOfWords = transcript.split(' ').length - 1;
+        if (numberOfWords > 1) {
+          const wordsPerMinute = (numberOfWords / timeSinceLastEvent) * MS_PER_MINUTE;
+          if (wordsPerMinute < 300) {
+            gauge.set(wordsPerMinute); // set gauge value
+            wpm.update(wordsPerMinute);
+            console.log(transcript, wordsPerMinute);
+          }
         }
       }
-    }
-  };
+    };
 
-  recognition.start();
+    recognition.start();
+  }
 } catch (error) {
   console.error(error);
 }
-
