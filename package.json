@@ -16,7 +16,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "parcel-bundler": "^1.11.0",
-    "sass": "^1.17.0"
+    "sass": "^1.25.0"
   },
   "dependencies": {
     "countup.js": "^1.9.3",
